@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Details
+{% endblock %}
+
+{% block body %}
+    <h1 class="white-text" > Book Details</h1>
+
+    <ul class="white-text">
+        <li> ISBN: {{book.isbn}}</li>
+        <li> Title: {{ book.title }}</li>
+        <li> Author: {{ book.author }}</li>
+        <li> Average Score: {{ book.score }} </li>
+        <li> Year of Publication: {{ book.year }} </li>
+    </ul>
+    <h2 class="white-text" > GoodReaders Ratings </h2>
+
+    <ul class="white-text">
+        <li> Average Rating: {{average_rating}} </li>
+        <li> Rating Count: {{ratings_counts}}</li>
+    </ul>
+
+    <h2 class="white-text" > Reviews </h2>
+
+    <ul class="white-text">
+        {% for review in reviews %}
+        <li>
+            <h3 class="white-text"> {{ review.username }} </h3> 
+            <h4 class="white-text"> Score: {{ review.score_user }}</h4> 
+            <p> {{ review.comment }}  </p>
+        </li>
+        {% endfor %}
+
+    </ul>
+    {% if is_commented %}
+        <h1 class="white-text"> You already had commented this book. </h1>
+
+        <button class="btn btn-primary">
+            <a href="{{url_for('search')}}" class="white-text"> Go Back </a>
+            </button>
+
+    {% else %}
+    <form action="{{ url_for('submit_comment', book_id = book.id)}}" method="post">
+        
+        <div class="form-group">
+
+            <select class="form-control" name="score">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="comment" placeholder="You can write a comment to this book.">
+        </div>
+    
+        <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    {% endif %}
+
+{% endblock %}

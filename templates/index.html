@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row align-items-center text-center">
+        <div class="col-12 ">
+                <h1 class="white-text">BOOKS REFERENCES</h1>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-12 " >
+<!-- Material form login -->
+<div style="padding-left: 33%;">
+        <div class="card" style="width: 50%;">
+
+                <h5 class="card-header white-text text-center" style="background: #18b1e8;">
+                  <strong>Sign in</strong>
+                </h5>
+              
+                <!--Card content-->
+                <div class="card-body">
+              
+                  <!-- Form -->
+                  <form class="text-center" style="color: #757575;" action="{{ url_for('login')}}" method="post">
+              
+                    <!-- Email -->
+                    <div class="md-form">
+                      <input type="text" id="materialLoginFormEmail" name="username" class="form-control">
+                      <label for="materialLoginFormEmail">User Name</label>
+                    </div>
+              
+                    <!-- Password -->
+                    <div class="md-form">
+                      <input type="password" id="materialLoginFormPassword" name="password" class="form-control">
+                      <label for="materialLoginFormPassword">Password</label>
+                    </div>
+              
+                    <!-- Sign in button -->
+                    <div class="md-form">
+                      <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
+                         Sign in
+                    </button>
+                    </div>
+
+      <!-- Register -->
+                    <p>Not a member?
+                      <a href="{{ url_for('register')}}">Register</a>
+                    </p>
+              
+                  </form>
+                </div> 
+        
+        
+            </div>
+        
+</div>
+
+
+
+
+{% endblock %}

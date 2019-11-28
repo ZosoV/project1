@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search a Book
+{% endblock %}
+
+{% block body %}
+    <h1 class="white-text"> Search a Book!</h1>
+
+    <form action="{{ url_for('filter_books')}}" , method="post">
+
+            <div class="form-group">
+                <select class="form-control" name="book_field">
+                    {% for field in search_options %}
+                        <option value="{{ field }}">{{field}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <input class="form-control" name="field_value" placeholder="Search by ISBN, Title or Author">
+            </div>
+    
+            <div class="form-group">
+                <button class="btn btn-primary">Search</button>
+            </div>
+
+            <table style="width:100%">
+                <tr>
+                    <th class="white-text">ISBN</th>
+                    <th class="white-text">Score</th>
+                    <th class="white-text">Title</th>
+                    <th class="white-text">Author</th>
+                    <th class="white-text">Year</th>
+                </tr>
+                {% for book in filter_books %} 
+                <tr class="white-text" >
+
+                    <th> {{ book.isbn }}</th>
+                    <th> {{ book.score }}</th>
+                    <th> 
+                        <a href="{{ url_for('book_info', book_id = book.id)}}">                         
+                        {{ book.title }}
+                        </a>
+                    </th>
+                    <th> {{ book.author }}</th>
+                    <th> {{ book.year }}</th>
+
+                </tr>
+                {% endfor %}
+            </table>
+                            
+    </form>
+
+    
+
+        
+{% endblock %}

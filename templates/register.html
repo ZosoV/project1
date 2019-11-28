@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    
+    <div class="row align-items-center">
+        <div class="col-12 " >
+<!-- Material form login -->
+<div style="padding-left: 33%;">
+        <!-- Material form register -->
+<div class="card" style="width: 50%;">
+
+        <h5 class="card-header white-text text-center" style="background: #18b1e8;">
+            <strong>Sign up</strong>
+        </h5>
+    
+        <!--Card content-->
+        <div class="card-body">
+    
+            <!-- Form -->
+            <form class="text-center" style="color: #757575;" action="{{ url_for('new_register')}}" method="post">
+    
+    
+                <!-- E-mail -->
+                <div class="md-form mt-0">
+                    <input type="text" id="materialRegisterFormEmail" name="username" class="form-control">
+                    <label for="materialRegisterFormEmail">User Name</label>
+                </div>
+    
+                <!-- Password -->
+                <div class="md-form">
+                    <input type="password" id="materialRegisterFormPassword" name="password" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock">
+                    <label for="materialRegisterFormPassword">Password</label>
+                    <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        At least 8 characters and 1 digit
+                    </small>
+                </div>
+    
+    
+                <!-- Sign up button -->
+                <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
+                    Sign in                                   
+                </button>
+                
+    
+                <hr>
+    
+                <!-- Terms of service -->
+                <p>By clicking
+                    <em>Sign up</em> you agree to our
+                    <a href="" target="_blank">terms of service</a>
+    
+            </form>
+            <!-- Form -->
+    
+        </div>
+    
+    </div>
+    <!-- Material form register -->
+            </div>
+        
+</div>
+
+
+
+
+{% endblock %}
