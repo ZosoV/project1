@@ -244,7 +244,7 @@ def api(book_id):
     book = db.execute("SELECT * FROM book WHERE id = :book_id",{"book_id": book_id}).fetchone()
     
     if book is None:
-        return render_template("error.html",message="404 error. Resource not found.")
+        return render_template("error.html",message="404 error. Resource not found."), 404
 
     #Proccess for rating count of Goofreaders
     goodreader_info = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": KEY, "isbns": book.isbn })
